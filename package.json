@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
-    "db:local": "wrangler d1 execute store-db --local --file=migrations/0001_init.sql",
-    "db:remote": "wrangler d1 execute store-db --remote --file=migrations/0001_init.sql"
+    "db:local": "wrangler d1 execute store-db --local --file=migrations/0001_init.sql && wrangler d1 execute store-db --local --file=migrations/0002_ops_apps.sql",
+    "db:remote": "wrangler d1 execute store-db --remote --file=migrations/0001_init.sql && wrangler d1 execute store-db --remote --file=migrations/0002_ops_apps.sql"
   },
   "dependencies": {
     "hono": "^4.6.14"
