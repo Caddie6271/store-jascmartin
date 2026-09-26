@@ -5,7 +5,7 @@ Ecommerce storefront for **Jason Martin Consulting**. Theme matches [jascmartin.
 Sells two catalogs from one cart:
 
 - Consulting packages (discovery call, assessment, vCISO / vCIO retainers, incident workshop)
-- Custom apps already in this GitHub account (Family Vault, Money, Knowing Faith, QuickMail, Family Hub request)
+- Custom apps: Family Vault, Money, Knowing Faith, QuickMail, Family Hub, plus AD Health, Netadmin, Sysadmin, Launcher, Project Management, and Reporting Engine
 
 Accounts are **Google OAuth**. Checkout is **Stripe** when keys exist; otherwise orders are stored in D1 as demo / request so you can take the first orders without payment wiring.
 
@@ -74,7 +74,13 @@ Use `http://localhost:8787/auth/google/callback` as a second Google redirect URI
 
 ## Pricing
 
-Package prices in `migrations/0001_init.sql` are **starting list prices**, not a signed SOW. Change them before you take paid orders. Family Hub is request-only (private household app).
+If the database already exists, also apply the new apps:
+
+```bash
+npx wrangler d1 execute store-db --remote --file=migrations/0002_ops_apps.sql
+```
+
+The worker still lists those six apps if the SQL has not been applied yet.
 
 ## Related repos
 
